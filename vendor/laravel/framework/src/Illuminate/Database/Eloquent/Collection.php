@@ -195,7 +195,7 @@ class Collection extends BaseCollection {
 	}
 
 	/**
-	 * Returns only the models from the collection with the specified keys.
+	 * Returns only the entities from the collection with the specified keys.
 	 *
 	 * @param  mixed  $keys
 	 * @return static
@@ -208,7 +208,7 @@ class Collection extends BaseCollection {
 	}
 
 	/**
-	 * Returns all models in the collection except the models with specified keys.
+	 * Returns all entities in the collection except the entities with specified keys.
 	 *
 	 * @param  mixed  $keys
 	 * @return static

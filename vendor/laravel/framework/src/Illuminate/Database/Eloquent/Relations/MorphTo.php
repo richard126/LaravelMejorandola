@@ -15,14 +15,14 @@ class MorphTo extends BelongsTo {
 	protected $morphType;
 
 	/**
-	 * The models whose relations are being eager loaded.
+	 * The entities whose relations are being eager loaded.
 	 *
 	 * @var \Illuminate\Database\Eloquent\Collection
 	 */
 	protected $models;
 
 	/**
-	 * All of the models keyed by ID.
+	 * All of the entities keyed by ID.
 	 *
 	 * @var array
 	 */
@@ -65,7 +65,7 @@ class MorphTo extends BelongsTo {
 	}
 
 	/**
-	 * Build a dictionary with the models.
+	 * Build a dictionary with the entities.
 	 *
 	 * @param  \Illuminate\Database\Eloquent\Collection  $models
 	 * @return void
@@ -229,7 +229,7 @@ class MorphTo extends BelongsTo {
 	}
 
 	/**
-	 * Return trashed models with query if told so
+	 * Return trashed entities with query if told so
 	 *
 	 * @param  \Illuminate\Database\Eloquent\Builder  $query
 	 * @return \Illuminate\Database\Eloquent\Builder

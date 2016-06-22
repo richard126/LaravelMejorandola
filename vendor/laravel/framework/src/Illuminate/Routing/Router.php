@@ -1207,8 +1207,8 @@ class Router implements HttpKernelInterface, RouteFiltererInterface {
 		{
 			if (is_null($value)) return null;
 
-			// For model binders, we will attempt to retrieve the models using the find
-			// method on the model instance. If we cannot retrieve the models we'll
+			// For model binders, we will attempt to retrieve the entities using the find
+			// method on the model instance. If we cannot retrieve the entities we'll
 			// throw a not found exception otherwise we will return the instance.
 			if ($model = (new $class)->find($value))
 			{

@@ -150,7 +150,7 @@ class Builder {
 	{
 		$models = $this->getModels($columns);
 
-		// If we actually found models we will also eager load any relationships that
+		// If we actually found entities we will also eager load any relationships that
 		// have been specified as needing to be eager loaded, which will solve the
 		// n+1 query issue for the developers to avoid running a lot of queries.
 		if (count($models) > 0)
@@ -211,7 +211,7 @@ class Builder {
 
 		// If the model has a mutator for the requested column, we will spin through
 		// the results and mutate the values so that the mutated version of these
-		// columns are returned as you would expect from these Eloquent models.
+		// columns are returned as you would expect from these Eloquent entities.
 		if ($this->model->hasGetMutator($column))
 		{
 			foreach ($results as $key => &$value)
@@ -398,7 +398,7 @@ class Builder {
 	}
 
 	/**
-	 * Get the hydrated models without eager loading.
+	 * Get the hydrated entities without eager loading.
 	 *
 	 * @param  array  $columns
 	 * @return \Illuminate\Database\Eloquent\Model[]
@@ -406,7 +406,7 @@ class Builder {
 	public function getModels($columns = array('*'))
 	{
 		// First, we will simply get the raw results from the query builders which we
-		// can use to populate an array with Eloquent models. We will pass columns
+		// can use to populate an array with Eloquent entities. We will pass columns
 		// that should be selected as well, which are typically just everything.
 		$results = $this->query->get($columns);
 
@@ -428,7 +428,7 @@ class Builder {
 	}
 
 	/**
-	 * Eager load the relationships for the models.
+	 * Eager load the relationships for the entities.
 	 *
 	 * @param  array  $models
 	 * @return array
@@ -439,7 +439,7 @@ class Builder {
 		{
 			// For nested eager loads we'll skip loading them here and they will be set as an
 			// eager load on the query to retrieve the relation so that they will be eager
-			// loaded on that query, because that is where they get hydrated as models.
+			// loaded on that query, because that is where they get hydrated as entities.
 			if (strpos($name, '.') === false)
 			{
 				$models = $this->loadRelation($models, $name, $constraints);
@@ -450,7 +450,7 @@ class Builder {
 	}
 
 	/**
-	 * Eagerly load the relationship on a set of models.
+	 * Eagerly load the relationship on a set of entities.
 	 *
 	 * @param  array     $models
 	 * @param  string    $name
@@ -470,9 +470,9 @@ class Builder {
 
 		$models = $relation->initRelation($models, $name);
 
-		// Once we have the results, we just match those back up to their parent models
+		// Once we have the results, we just match those back up to their parent entities
 		// using the relationship instance. Then we just return the finished arrays
-		// of models which have been eagerly hydrated and are readied for return.
+		// of entities which have been eagerly hydrated and are readied for return.
 		$results = $relation->getEager();
 
 		return $relation->match($models, $results, $name);
